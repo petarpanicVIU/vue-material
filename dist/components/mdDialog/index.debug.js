@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,13 +65,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 455);
 /******/ })
@@ -244,7 +244,7 @@ var _mixin = __webpack_require__(1);
 
 var _mixin2 = _interopRequireDefault(_mixin);
 
-var _transitionEndEventName = __webpack_require__(41);
+var _transitionEndEventName = __webpack_require__(42);
 
 var _transitionEndEventName2 = _interopRequireDefault(_transitionEndEventName);
 
@@ -748,7 +748,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/components/mdDialog/mdDialog.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/components/mdDialog/mdDialog.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdDialog.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -789,7 +789,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/components/mdDialog/mdDialogActions.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/components/mdDialog/mdDialogActions.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdDialogActions.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -830,7 +830,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/components/mdDialog/mdDialogContent.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/components/mdDialog/mdDialogContent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdDialogContent.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -871,7 +871,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/components/mdDialog/mdDialogTitle.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/components/mdDialog/mdDialogTitle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdDialogTitle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -912,7 +912,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/components/mdDialog/presets/mdDialogAlert.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/components/mdDialog/presets/mdDialogAlert.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdDialogAlert.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -953,7 +953,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/components/mdDialog/presets/mdDialogConfirm.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/components/mdDialog/presets/mdDialogConfirm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdDialogConfirm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -994,7 +994,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/components/mdDialog/presets/mdDialogPrompt.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/components/mdDialog/presets/mdDialogPrompt.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdDialogPrompt.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -1153,36 +1153,6 @@ if (false) {
 
 /***/ }),
 
-/***/ 41:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function transitionEndEventName() {
-  var el = document.createElement('span');
-  var transitions = {
-    transition: 'transitionend',
-    OTransition: 'oTransitionEnd',
-    MozTransition: 'transitionend',
-    WebkitTransition: 'webkitTransitionEnd'
-  };
-
-  for (var transition in transitions) {
-    if (el.style[transition] !== undefined) {
-      return transitions[transition];
-    }
-  }
-}
-
-exports.default = transitionEndEventName();
-module.exports = exports['default'];
-
-/***/ }),
-
 /***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1215,6 +1185,36 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-5d32a2a6", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function transitionEndEventName() {
+  var el = document.createElement('span');
+  var transitions = {
+    transition: 'transitionend',
+    OTransition: 'oTransitionEnd',
+    MozTransition: 'transitionend',
+    WebkitTransition: 'webkitTransitionEnd'
+  };
+
+  for (var transition in transitions) {
+    if (el.style[transition] !== undefined) {
+      return transitions[transition];
+    }
+  }
+}
+
+exports.default = transitionEndEventName();
+module.exports = exports['default'];
 
 /***/ }),
 

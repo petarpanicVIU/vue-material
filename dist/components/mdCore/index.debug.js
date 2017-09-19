@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,13 +65,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 481);
 /******/ })
@@ -450,7 +450,7 @@ function injectStyle(style, spec, name, styleId) {
 function install(Vue) {
   Vue.material = new Vue({
     data: {
-      currentTheme: 'default',
+      currentTheme: null,
       inkRipple: true,
       prefix: 'md-theme-',
       styles: [],
@@ -514,11 +514,15 @@ function install(Vue) {
         this.useTheme(name);
 
         if (_dom.changeHtmlMetaColor) {
-          (0, _dom.changeHtmlMetaColor)(registeredPrimaryColor[name], prefix + this.currentTheme, prefix + name);
+          (0, _dom.changeHtmlMetaColor)(registeredPrimaryColor[name], prefix + name, prefix + this.currentTheme);
         }
 
         this.currentTheme = name;
       }
+    },
+    created: function created() {
+      // set the default theme by default
+      this.setCurrentTheme('default');
     }
   });
 
@@ -1073,7 +1077,7 @@ module.exports = function(bitmap, value){
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys       = __webpack_require__(31)
-  , enumBugKeys = __webpack_require__(21);
+  , enumBugKeys = __webpack_require__(22);
 
 module.exports = Object.keys || function keys(O){
   return $keys(O, enumBugKeys);
@@ -1084,7 +1088,7 @@ module.exports = Object.keys || function keys(O){
 /***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(22)('keys')
+var shared = __webpack_require__(23)('keys')
   , uid    = __webpack_require__(20);
 module.exports = function(key){
   return shared[key] || (shared[key] = uid(key));
@@ -1408,24 +1412,23 @@ module.exports = exports['default'];
 /***/ }),
 
 /***/ 21:
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.13 ToObject(argument)
+var defined = __webpack_require__(14);
+module.exports = function(it){
+  return Object(defined(it));
+};
+
+/***/ }),
+
+/***/ 22:
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
-
-/***/ }),
-
-/***/ 22:
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(2)
-  , SHARED = '__core-js_shared__'
-  , store  = global[SHARED] || (global[SHARED] = {});
-module.exports = function(key){
-  return store[key] || (store[key] = {});
-};
 
 /***/ }),
 
@@ -1439,10 +1442,11 @@ module.exports = function(key){
 /***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
-// 7.1.13 ToObject(argument)
-var defined = __webpack_require__(14);
-module.exports = function(it){
-  return Object(defined(it));
+var global = __webpack_require__(2)
+  , SHARED = '__core-js_shared__'
+  , store  = global[SHARED] || (global[SHARED] = {});
+module.exports = function(key){
+  return store[key] || (store[key] = {});
 };
 
 /***/ }),
@@ -1662,6 +1666,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -1851,7 +1859,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/core/components/mdInkRipple/mdInkRipple.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/core/components/mdInkRipple/mdInkRipple.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdInkRipple.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -1892,7 +1900,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/pablohpsilva/Code/vue-material/src/core/components/mdTheme/mdTheme.vue"
+Component.options.__file = "/Users/petarpanic/viu-material-forked/vue-material/src/core/components/mdTheme/mdTheme.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key.substr(0, 2) !== "__"}))) {console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -1919,7 +1927,7 @@ module.exports = Component.exports
 /***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(43), __esModule: true };
+module.exports = { "default": __webpack_require__(45), __esModule: true };
 
 /***/ }),
 
@@ -1954,15 +1962,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 43:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(48);
+__webpack_require__(49);
 module.exports = __webpack_require__(4).Object.keys;
 
 /***/ }),
 
-/***/ 46:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
@@ -1978,26 +1986,26 @@ module.exports = function(KEY, exec){
 
 /***/ }),
 
-/***/ 48:
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 Object.keys(O)
-var toObject = __webpack_require__(23)
-  , $keys    = __webpack_require__(18);
-
-__webpack_require__(46)('keys', (function(){
-  return function keys(it){
-    return $keys(toObject(it));
-  };
-}));
-
-/***/ }),
-
 /***/ 481:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(114);
 
+
+/***/ }),
+
+/***/ 49:
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 Object.keys(O)
+var toObject = __webpack_require__(21)
+  , $keys    = __webpack_require__(18);
+
+__webpack_require__(47)('keys', (function(){
+  return function keys(it){
+    return $keys(toObject(it));
+  };
+}));
 
 /***/ }),
 
