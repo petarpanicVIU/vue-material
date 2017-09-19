@@ -5,16 +5,19 @@
   position: relative;
   pointer-events: none;
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 
   &.md-indeterminate {
-    .md-spinner-draw {
-      animation: spinner-rotate 1.9s linear infinite;
-      transform: rotate(0deg) translateZ(0);
-    }
+    animation: spinner-rotate 1.9s linear infinite;
+    transform: rotate(0deg) translateZ(0) translate3d(0,0,0);
+    backface-visibility: hidden;
 
     .md-spinner-path {
       stroke-dasharray: 2, 200;
       animation: spinner-dash 1.425s ease-in-out infinite;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -53,12 +56,13 @@
   fill: none;
   stroke-dashoffset: 0;
   stroke-miterlimit: 10;
+  will-change: stroke-dashoffset, stroke-dasharray;
   transition: $swift-ease-out;
 }
 
 @keyframes spinner-rotate {
   to {
-    transform: rotate(360deg) translateZ(0);
+    transform: rotate(360deg) translateZ(0) translate3d(0,0,0);
   }
 }
 
